@@ -1,0 +1,143 @@
+/* Contenedor principal */
+.complaint-search-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #1f1f1f; /* Negro suave */
+  background-color: #ffffff; /* Fondo blanco */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Encabezado */
+.search-header h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #ff670f; /* Naranja principal */
+  text-align: center;
+}
+
+/* Formulario de búsqueda */
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff7f0; /* Naranja muy claro para resaltar formulario */
+  border: 1px solid #ff670f; 
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 200px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #1f1f1f;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ff670f; 
+  font-size: 14px;
+}
+
+/* Botones */
+button[type="submit"] {
+  background-color: #ff670f; /* Naranja principal */
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #e55b0d; /* Naranja oscuro al pasar el mouse */
+}
+
+/* Loading y error */
+.loading-indicator,
+.error-message {
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.loading-indicator {
+  background-color: #fff4e6; /* Naranja muy claro */
+  color: #ff670f;
+}
+
+.error-message {
+  background-color: #ffe6e6; /* Rojo claro para errores */
+  color: #b91c1c;
+}
+
+/* Tabla de resultados */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+thead th {
+  text-align: left;
+  padding: 12px;
+  background-color: #ff670f; /* Naranja */
+  color: #ffffff;
+  font-weight: 600;
+}
+
+tbody td {
+  padding: 12px;
+  border-bottom: 1px solid #ffb380; /* Naranja claro */
+}
+
+tbody tr:hover {
+  background-color: #fff3e0; /* Naranja muy suave */
+}
+
+.actions-cell button {
+  background-color: #ff670f; /* Naranja */
+  color: #ffffff; /* Letras blancas */
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.actions-cell button:hover {
+  background-color: #e55b0d; /* Naranja más oscuro al pasar el mouse */
+  transform: translateY(-2px); /* Pequeño efecto “subida” al hover */
+}
+
+/* Paginación */
+app-pagination-controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+

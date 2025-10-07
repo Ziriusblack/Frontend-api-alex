@@ -1,0 +1,131 @@
+<navigation-bar></navigation-bar>
+<div class="complaint-search-container">
+  <div class="search-header">
+    <h2>Search Complaints</h2>
+  </div>
+
+  <!-- Search Form -->
+  <div class="search-form-container">
+    <form [formGroup]="searchForm" class="search-form" (ngSubmit)="searchComplaints()">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="searchTerm">Busqueda</label>
+          <input 
+            id="searchTerm"
+            type="text" 
+            formControlName="searchTerm"
+            placeholder="Buscar por asunto o radicado..."
+            class="form-control">
+        </div>        
+
+        <div class="form-group">
+            <label for="status">Estado</label>
+            <select id="status" formControlName="status" class="form-control">
+                @for (item of statusOptions; track item.value) {
+                    <option [value]=item.value>{{ item.label }}</option>
+                }
+            </select>
+        </div> 
+        <button type="submit">Buscar</button>
+      </div>
+    </form>
+  </div><br>
+
+
+
+  <!-- Loading Indicator -->
+   @if (loading) {
+    <div class="loading-indicator">
+      <p>Loading complaints...</p>
+    </div><br>
+   }
+  
+
+  <!-- Error Message -->
+   @if (error) {
+    <div class="error-message">
+      <p>{{ error }}</p>
+    </div><br>
+   }
+  
+
+  <!-- Results Table -->
+    <h3>Resultados</h3>
+    @if (complaints.length>0) {
+        <table>
+            <thead>
+                <tr>
+                <th >
+                    Redicado            
+                </th>
+                <th>
+                    Asunto
+                </th>          
+                <th>
+                    Estado           
+                </th>
+                <th>
+                    Fecha de Creación           
+                </th>
+                <th>Herramientas</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (complaint of complaints; track $index) {
+                    <tr>
+                        <td class="reference-cell">{{ complaint.reference }}</td>
+                        <td class="subject-cell">  {{ complaint.subject }}</td> 
+                        <td>{{ complaint.status  }} </td>
+                        <td>{{ complaint.recievedDate }}</td>
+                        <td class="actions-cell">
+                            <button (click)="viewComplaint(complaint.id)">
+                            View
+                            </button>
+                        </td>
+                    </tr>
+                }       
+            </tbody>
+        </table>
+        
+    }
+<div class="flex items-center justify-center border-t border-white/10 px-4 py-3 sm:px-6">
+  <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-center">
+    <div>
+      <p class="text-sm text-gray-300 mb-2 text-center">
+        Showing
+        <span class="font-medium">1</span>
+        to
+        <span class="font-medium">10</span>
+        of
+        <span class="font-medium">97</span>
+        results
+      </p>
+    </div>
+    <div>
+      <nav aria-label="Pagination" class="isolate inline-flex -space-x-px rounded-md">
+        <a href="#" class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 inset-ring inset-ring-gray-700 hover:bg-white/5 focus:z-20 focus:outline-offset-0">
+          <span class="sr-only">Previous</span>
+          <svg viewBox="0 0 20 20" fill="currentColor" class="size-5">
+            <path d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" />
+          </svg>
+        </a>
+        
+        <a href="#" aria-current="page" class="relative z-10 inline-flex items-center bg-orange-500 px-4 py-2 text-sm font-semibold text-white focus:z-20">1</a>
+        <a href="#" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-200 inset-ring inset-ring-gray-700 hover:bg-orange-400 focus:z-20">2</a>
+        <a href="#" class="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-200 inset-ring inset-ring-gray-700 hover:bg-orange-400 focus:z-20 md:inline-flex">3</a>
+        <span class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-400 inset-ring inset-ring-gray-700">...</span>
+        <a href="#" class="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-200 inset-ring inset-ring-gray-700 hover:bg-orange-400 focus:z-20 md:inline-flex">8</a>
+        <a href="#" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-200 inset-ring inset-ring-gray-700 hover:bg-orange-400 focus:z-20">9</a>
+        <a href="#" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-200 inset-ring inset-ring-gray-700 hover:bg-orange-400 focus:z-20">10</a>
+        
+        <a href="#" class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 inset-ring inset-ring-gray-700 hover:bg-white/5 focus:z-20">
+          <span class="sr-only">Next</span>
+          <svg viewBox="0 0 20 20" fill="currentColor" class="size-5">
+            <path d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" />
+          </svg>
+        </a>
+      </nav>
+    </div>
+  </div>
+</div>
+
